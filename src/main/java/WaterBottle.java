@@ -10,7 +10,23 @@ public class WaterBottle {
         return this.name;
     }
 
-    public int getStartingVolume() {
+    public int getVolume() {
         return this.volume;
+    }
+
+    public void drink() {
+        if (this.volume >= 10){
+            this.volume -= 10;
+        }
+    }
+
+    public void empty() {
+        this.volume = 0;
+    }
+
+    public void refill() {
+        if (this.volume < 100){
+            this.volume = 100;
+        }
     }
 }
