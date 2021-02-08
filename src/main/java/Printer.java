@@ -1,12 +1,12 @@
 public class Printer {
     private String name;
     private int sheets;
-    private int tonerVolume;
+    private int tonerLevel;
 
-    public Printer(String name, int sheets){
+    public Printer(String name, int sheets, int tonerLevel){
         this.name = name;
         this.sheets = sheets;
-        this.tonerVolume = tonerVolume;
+        this.tonerLevel = tonerLevel;
     }
 
     public String getName(){
@@ -19,8 +19,16 @@ public class Printer {
 
     public void print(int numberOfPages, int duplicates){
         int total = numberOfPages *= duplicates;
-        if (this.sheets >= total){
+
+        if (tonerLevel == 0){
+            System.out.println("Ink empty, please refill");
+        }
+        if(sheets == 0){
+            System.out.println("Paper tray empty, please refill");
+        }
+        if (this.sheets >= total && tonerLevel >= total){
             this.sheets -= total;
+            this.tonerLevel -= total;
         }
     }
 }
